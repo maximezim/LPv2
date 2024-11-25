@@ -28,3 +28,11 @@ virtual_mailbox_maps = hash:/etc/postfix/vmaps
 virtual_minimum_uid = 100
 virtual_uid_maps = static:5000
 virtual_gid_maps = static:5000
+append_dot_mydomain = no
+local_recipient_maps = hash:/etc/postfix/vmaps
+
+smtp_bind_address = 0.0.0.0
+smtp_bind_address_v6 = ::0
+smtp_tls_security_level = none
+smtpd_tls_security_level = none
+smtp_tls_loglevel = 1

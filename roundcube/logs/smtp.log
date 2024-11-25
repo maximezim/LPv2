@@ -1,2 +1,25 @@
 [25-Nov-2024 15:01:32 +0000]: <83b38550> Connecting to smtp:587...
 [25-Nov-2024 15:02:11 +0000]: <83b38550> Connecting to smtp:587...
+[25-Nov-2024 15:44:19 +0000]: <777e7574> Connecting to smtp:587...
+[25-Nov-2024 15:45:04 +0000]: <777e7574> Connecting to smtp:587...
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Connecting to smtp:587...
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Recv: 220 localhost ESMTP Postfix
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Send: EHLO localhost
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Recv: 250-localhost
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Recv: 250-PIPELINING
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Recv: 250-SIZE 10240000
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Recv: 250-VRFY
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Recv: 250-ETRN
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Recv: 250-AUTH SCRAM-SHA-1 SCRAM-SHA-256 DIGEST-MD5 NTLM CRAM-MD5 PLAIN LOGIN
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Recv: 250-ENHANCEDSTATUSCODES
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Recv: 250-8BITMIME
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Recv: 250-DSN
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Recv: 250 CHUNKING
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Send: AUTH LOGIN
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Recv: 334 VXNlcm5hbWU6
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Send: a2FyaW5l
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Recv: 334 UGFzc3dvcmQ6
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Send: ****** [8]
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Recv: 535 5.7.8 Error: authentication failed: authentication failure
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Send: QUIT
+[25-Nov-2024 15:50:07 +0000]: <e47a6f5e> Recv: 221 2.0.0 Bye

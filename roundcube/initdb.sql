@@ -39,6 +39,26 @@ CREATE TABLE `cache` (
   INDEX `created_index` (`created`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `identities` (
+  `identity_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `changed` datetime NOT NULL DEFAULT '1000-01-01 00:00:00',
+  `del` tinyint(1) NOT NULL DEFAULT '0',
+  `standard` tinyint(1) NOT NULL DEFAULT '0',
+  `name` varchar(128) NOT NULL,
+  `organization` varchar(128) DEFAULT '',
+  `email` varchar(128) NOT NULL,
+  `reply-to` varchar(128) NOT NULL DEFAULT '',
+  `bcc` varchar(128) NOT NULL DEFAULT '',
+  `signature` text,
+  `html_signature` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`identity_id`),
+  KEY `user_identities_index` (`user_id`, `del`),
+  KEY `email_identities_index` (`email`, `del`),
+  CONSTRAINT `user_id_fk_identities` FOREIGN KEY (`user_id`)
+    REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- Grant privileges
 GRANT ALL PRIVILEGES ON roundcube.* TO 'roundcube'@'%';
 FLUSH PRIVILEGES;

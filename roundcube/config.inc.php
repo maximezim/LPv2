@@ -2,7 +2,7 @@
 $config['db_dsnw'] = 'mysql://roundcube:password@db/roundcube';
 $config['default_host'] = 'dovecot';
 $config['smtp_server'] = 'smtp';
-$config['smtp_port'] = 25;
+$config['smtp_port'] = 587;
 $config['support_url'] = '';
 $config['des_key'] = 'changeThisToARandomString123456789';
 $config['product_name'] = 'Webmail';
@@ -16,3 +16,6 @@ $config['temp_dir'] = '/var/www/html/temp/';
 $config['plugins'] = [];
 $config['skin'] = 'elastic';
 $config['enable_installer'] = false;
+$config['smtp_user'] = '%u';
+$config['smtp_pass'] = '%p';
+$config['smtp_auth_type'] = 'LOGIN';

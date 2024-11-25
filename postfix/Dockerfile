@@ -10,12 +10,13 @@ RUN apt-get update && \
     chown -R vmail:vmail /var/mail
 
 COPY main.cf /etc/postfix/main.cf
+COPY master.cf /etc/postfix/master.cf
 COPY vmaps /etc/postfix/vmaps
 
 RUN postmap /etc/postfix/vmaps && \
     mkdir -p /var/spool/postfix/ && \
     chown -R postfix:postfix /var/spool/postfix
 
-EXPOSE 25
+EXPOSE 25 587
 
 CMD ["postfix", "start-fg"]
