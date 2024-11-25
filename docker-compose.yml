@@ -1,0 +1,71 @@
+# docker-compose.yml
+services:
+  smtp:
+    build: postfix
+    container_name: smtp
+    volumes:
+      - mail_data:/var/mail
+    ports:
+      - "25:25"
+    networks:
+      - local-network
+    healthcheck:
+      test: ["CMD", "postfix", "status"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  dovecot:
+    build: dovecot
+    container_name: dovecot
+    volumes:
+      - mail_data:/var/mail
+    ports:
+      - "143:143"
+    networks:
+      - local-network
+    depends_on:
+      smtp:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    container_name: roundcube-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=roundcube
+      - MYSQL_USER=roundcube
+      - MYSQL_PASSWORD=password
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./roundcube/initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+    networks:
+      - local-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "roundcube", "-ppassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  roundcube:
+    build: roundcube
+    container_name: roundcube
+    ports:
+      - "8000:80"
+    volumes:
+      - ./roundcube/logs:/var/www/html/logs
+    networks:
+      - local-network
+    depends_on:
+      db:
+        condition: service_healthy
+      dovecot:
+        condition: service_started
+
+volumes:
+  mail_data:
+  db_data:
+
+networks:
+  local-network:
+    driver: bridge
