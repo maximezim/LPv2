@@ -15,4 +15,4 @@ $config['log_dir'] = '/var/www/html/logs/';
 $config['temp_dir'] = '/var/www/html/temp/';
 $config['plugins'] = [];
 $config['skin'] = 'elastic';
-$config['enable_installer'] = true;
+$config['enable_installer'] = false;

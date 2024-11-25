@@ -10,6 +10,13 @@ RUN apt-get update && \
     mkdir -p /var/mail && \
     chown -R vmail:vmail /var/mail
 
+# Create password file and add users
+RUN echo "sender:{PLAIN}1234" > /etc/dovecot/passwd && \
+    echo "karine:{PLAIN}1234" >> /etc/dovecot/passwd && \
+    mkdir -p /var/mail/localhost/sender && \
+    mkdir -p /var/mail/localhost/karine && \
+    chown -R vmail:vmail /var/mail/localhost
+
 COPY dovecot.conf /etc/dovecot/dovecot.conf
 
 EXPOSE 143

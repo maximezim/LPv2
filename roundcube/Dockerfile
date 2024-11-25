@@ -22,6 +22,9 @@ RUN mkdir -p /var/www/html/temp /var/www/html/logs && \
     chown -R www-data:www-data /var/www/html && \
     chmod -R 777 /var/www/html/temp /var/www/html/logs
 
+# Remove installer after setup
+RUN rm -rf /var/www/html/installer
+
 COPY config.inc.php /var/www/html/config/config.inc.php
 
 # Enable PHP error logging
